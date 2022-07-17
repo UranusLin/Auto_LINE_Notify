@@ -24,6 +24,7 @@ def get_line_notify_token(path) -> list:
 
 
 def sent_to_line_notify(content: dict, token: dict):
+    print("發送群組: {}".format(token.get("name")))
     headers = {"Authorization": "Bearer " + token.get("token")}
     content = deepcopy(content)
     if content.get("type") == "image":

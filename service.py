@@ -13,4 +13,5 @@ def sent_line_notify():
     sent_content_list = parser_file(files_path)
     # sent LINE notify
     for content in sent_content_list:
+        print("檔案: {}".format(content.get("filename")))
         process_sent_notify(content, line_token_list)
