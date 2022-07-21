@@ -30,7 +30,6 @@ def sent_to_line_notify(content: dict, token: dict):
     headers = {"Authorization": "Bearer " + token.get("token")}
     content = deepcopy(content)
     if content.get("type") == "image":
-        resize_image(content.get("files").get("imageFile"))
         content["files"] = {
             "imageFile": open(content.get("files").get("imageFile"), "rb")
         }
@@ -59,6 +58,7 @@ def parser_file(files: list) -> list:
                 "filename": file_name
             })
         elif "jpg" in i or "jpeg" in i or "png" in i:
+            resize_image(i)
             file_name, file = read_image_content(i)
             sent_content_list.append({
                 "type": "image",
