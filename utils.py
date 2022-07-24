@@ -105,9 +105,9 @@ def white_csv_log(log: list):
 
 
 def resize_image(path):
-    orig_size = get_size_format(os.path.getsize(path))
-    if float(orig_size[0:-2]) > 3:
-        compress_img(path, 3 / float(orig_size[0:-2]))
+    orig_size = os.path.getsize(path)
+    if orig_size > 3000000:
+        compress_img(path, 3000000 / float(orig_size))
 
 
 def get_size_format(b, factor=1024, suffix="B"):
