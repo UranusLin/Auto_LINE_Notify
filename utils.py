@@ -47,8 +47,8 @@ def get_all_file_path(path) -> list:
 def parser_file(files: list) -> list:
     sent_content_list = []
     for i in files:
-        i = str(i).lower()
-        if "txt" in i:
+        filename_lower = str(i).lower()
+        if "txt" in filename_lower:
             file_name, file = read_txt_content(i)
             sent_content_list.append({
                 "type": "msg",
@@ -58,7 +58,7 @@ def parser_file(files: list) -> list:
                 "files": {},
                 "filename": file_name
             })
-        elif "jpg" in i or "jpeg" in i or "png" in i:
+        elif "jpg" in filename_lower or "jpeg" in filename_lower or "png" in filename_lower:
             resize_image(i)
             file_name, file = read_image_content(i)
             sent_content_list.append({
