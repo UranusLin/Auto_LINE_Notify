@@ -47,6 +47,7 @@ def get_all_file_path(path) -> list:
 def parser_file(files: list) -> list:
     sent_content_list = []
     for i in files:
+        i = str(i).lower()
         if "txt" in i:
             file_name, file = read_txt_content(i)
             sent_content_list.append({
